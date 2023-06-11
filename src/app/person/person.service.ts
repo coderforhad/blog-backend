@@ -39,7 +39,7 @@ export class PersonService {
     });
   }
 
-  remove(id: MongooSchema.Types.ObjectId) {
-    return this.personModel.deleteOne(id);
+  removePerson(id: MongooSchema.Types.ObjectId) {
+    return this.personModel.deleteOne({ _id: id });
   }
 }

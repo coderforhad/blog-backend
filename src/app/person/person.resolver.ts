@@ -43,6 +43,6 @@ export class PersonResolver {
   removePerson(
     @Args('id', { type: () => String }) id: MongooSchema.Types.ObjectId,
   ) {
-    return this.personService.remove(id);
+    return this.personService.removePerson(id);
   }
 }
