@@ -39,7 +39,13 @@ export class PersonService {
     });
   }
 
-  removePerson(id: MongooSchema.Types.ObjectId) {
-    return this.personModel.deleteOne({ _id: id });
+  async removePerson(id: MongooSchema.Types.ObjectId) {
+    const deletedPerson = await this.personModel.findByIdAndDelete(id);
+
+    if (!deletedPerson) {
+      throw new Error(`Person with ID ${id} not found.`);
+    }
+
+    return deletedPerson;
   }
 }
