@@ -10,7 +10,9 @@ import { join } from 'path';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: false,
+      csrfPrevention: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      context: ({ req, res }) => ({ req, res }),
     }),
   ],
 })
